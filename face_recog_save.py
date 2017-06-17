@@ -8,8 +8,12 @@ cascade_path = "haarcascade_frontalface_alt.xml"
 #カスケード分類器の特徴量を取得する
 cascade = cv2.CascadeClassifier(cascade_path)
 
-#対象の人物の写真を入れる。デフォルトは有名なLennaさんの写真。
-img = cv2.imread('Lenna.png')
+#対象の人物の写真を入れる。デフォルトは有名なLennaさんと、徳川慶喜。
+photo_name = "Lenna.png"
+#photo_name = "yoshinobu.jpg"
+
+img = cv2.imread(photo_name)
+#img = cv2.imread('Lenna.png')
 
 # 顔を検知
 faces = cascade.detectMultiScale(img, minSize=(100,100))#顔miniサイズを追加
@@ -31,12 +35,12 @@ cv2.imshow('img',img)
 #戻り値: 押されたキーコード
 keycode = cv2.waitKey(0)
 
-# "S"が押されたら、指定名称(ここではface_cut.png)で保存する。
+# "S"を押すと、face_of_写真名というファイル名で顔の部分の写真を保存する。
 if keycode == ord('s'):
     #画像を保存
      #第一引数: 保存するファイル名
      #第一引数: 保存したい画像
-    cv2.imwrite("face_cut.png",cut_img)
+    cv2.imwrite("face_of_" + photo_name,cut_img)
 
 # 作成したウィンドウをすべて破棄
 cv2.destroyAllWindows()
