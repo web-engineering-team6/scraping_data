@@ -45,7 +45,7 @@ for i in range(1, 101, 20):
 		req = Request(resource, headers={'User-Agent': 'Mozilla/5.0'})
 		res = urlopen(req)
 		sleep(1)
-		f = open(dir_name +  "/" + file_name + "_" + str(i + j), "wb")
+		f = open(dir_name +  "/" + file_name + "_" + str(i + j) + ".png", "wb")
 		f.write(res.read())
 		f.close()
 		
